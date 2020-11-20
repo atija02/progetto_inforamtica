@@ -47,7 +47,7 @@
             <ul class="list-unstyled components">
                 <p style="font-size: 25px;">Welcome!</p>
                 <li class="active">
-                    <a href="#">Home&nbsp;&nbsp;<i class="fas fa-home" style="font-size:15px"></i></a>
+                    <a href="index.html">Home&nbsp;&nbsp;<i class="fas fa-home" style="font-size:15px"></i></a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -74,7 +74,7 @@
             <div class="loginContainer">
                 <ul class="list-unstyled CTAs">
                     <li>
-                        <a href="signin.html" class="download">Login</a>
+                        <a href="login.html" class="download">Login</a>
                     </li>
                     <li>
                         <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Profile</a>
@@ -92,7 +92,7 @@
         <!-- Page Content  -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light " style="padding-bottom:23.5px;padding-top:23.5px;width:100%; position: fixed; overflow:hidden; z-index: 9999; margin-bottom:100px; background-color: whitesmoke;">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
@@ -100,24 +100,55 @@
                         <span>Toggle Sidebar</span>
                     </button>
 
-                    <!--
-                     <form class="form-inline">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="text" class="form-control-sm form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                            <button class="btn btn-sm btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-                        </div>
-                    </form>
-                    -->
 
+                    <div style="padding-right: 14.3%;">
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+
+
+                    <!-- <div class="rmButtonContent" style="padding-right: 14.5%;">
+
+                        <button class="rmButton">Cerca</button>
+                    </div> -->
 
 
                 </div>
             </nav>
 
 
+            <div id="rightMenu">
+
+                <h3 class="rmTitle" style="color:whitesmoke;">Potrebbe piacerti</h3>
+                <div class="rmContent">
+                    <img src="images/kanye_west.jpg" class="imgContainer">
+                    <i class="pHeader1" style="color:#262525">@kanye_west</i>
+                </div>
+                <div class="rmContent">
+                    <img src="images/WhatsApp Image 2020-11-20 at 09.54.17.jpeg" class="imgContainer">
+                    <i class="pHeader1" style="color:#262525">@kristo_lala</i>
+                </div>
+                <div class="rmContent">
+                    <img src="images/WhatsApp Image 2020-11-20 at 09.54.17.jpeg" class="imgContainer">
+                    <i class="pHeader1" style="color:#262525">@kristo_lala</i>
+                </div>
+                <div class="rmContent">
+                    <img src="images/WhatsApp Image 2020-11-20 at 09.54.17.jpeg" class="imgContainer">
+                    <i class="pHeader1" style="color:#262525">@kristo_lala</i>
+                </div>
+                <div class="rmFooter">
+                    <p class="rmFooterTitle">Prima volta su Twitter?</p>
+                    <p class="rmFooterP"> Iscriviti subito per sbloccare tutte le funzioni del sito.</p>
+                    <div class="rmButtonContent">
+                        <button class="rmButton" onclick="location.href='register.html'">Iscriviti</button>
+                    </div>
+
+
+                </div>
+
+            </div>
 
 
             <div class="postContainer">
@@ -129,7 +160,7 @@
                         <p class="pContent">More than 7 million community health workers serve their neighbors around the world, improving access to primary healthcare for their communities. Now they’re doing heroic work to respond to the pandemic.</p>
                     </div>
                     <div class="card-footer bg-transparent border-light">
-                        <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
+                        <span class="pFooter1" onclick="location.href='post-comment.html'">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
                         <i class="far fa-heart" style="font-size:16px;float:right"></i>
                         <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
                     </div>
@@ -153,6 +184,39 @@
                 </div>
                 <!-- FINE POST N2-->
 
+                <!-- POST N3 -->
+                <div class="postContainer2">
+                    <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
+                        <div class="card-body text-info pb-0">
+                            <img src="images/giuseppe_conte.jpg" class="imgContainer">
+                            <i class="pHeader1">@giuseppeconte</i> <i class="fas fa-check"></i>
+                            <p class="pContent">Indossa la mascherina, mantieni la distanza, lava spesso le mani. Seguiamo queste #TreSempliciRegole. Questa battaglia si vince con l’impegno di TUTTI.</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-light">
+                            <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
+                            <i class="far fa-heart" style="font-size:16px;float:right"></i>
+                            <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- FINE POST N3 -->
+
+                <!-- POST N3 -->
+                <div class="postContainer2">
+                    <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
+                        <div class="card-body text-info pb-0">
+                            <img src="images/giuseppe_conte.jpg" class="imgContainer">
+                            <i class="pHeader1">@giuseppeconte</i> <i class="fas fa-check"></i>
+                            <p class="pContent">Indossa la mascherina, mantieni la distanza, lava spesso le mani. Seguiamo queste #TreSempliciRegole. Questa battaglia si vince con l’impegno di TUTTI.</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-light">
+                            <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
+                            <i class="far fa-heart" style="font-size:16px;float:right"></i>
+                            <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- FINE POST N3 -->
                 <!-- POST N3 -->
                 <div class="postContainer2">
                     <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">

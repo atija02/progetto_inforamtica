@@ -5,7 +5,7 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background: whitesmoke;
 }
 
 p {
@@ -152,12 +152,12 @@ a.article:hover {
 
 #content {
     width: calc(100% - 250px);
-    padding: 40px;
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;
     top: 0;
     right: 0;
+    background-color: whitesmoke;
 }
 
 #content.active {
@@ -187,6 +187,79 @@ a.article:hover {
     }
 }
 
+@media (max-width: 1600px) {
+    #rightMenu {
+        display: none;
+    }
+}
+
+#rightMenu {
+    background-color: #7386d5;
+    position: fixed;
+    margin-top: 150px;
+    right: 42px;
+    height: 640px;
+    width: 300px;
+    border: 1px solid#7386D5;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rmTitle {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #47748B;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+.rmContent {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+}
+
+.rmFooter {
+    padding-top: 28px;
+    padding-bottom: 38px;
+    border-top: 1px solid #47748B;
+}
+
+.rmFooterTitle {
+    font-size: 23.5px;
+    color: #fff;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+
+.rmFooterP {
+    color: #262525;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+}
+
+.rmButtonContent {
+    text-align: center;
+}
+
+.rmButton {
+    background: #6d7fcc;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 34%;
+    padding-right: 34%;
+    border: 1px solid #6D7FCC;
+    border-radius: 5px;
+    border-color: #6D7FCC;
+    color: white;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
 .IconText {
     font-size: 30px;
 }
@@ -200,10 +273,12 @@ a.article:hover {
 
 .postContainer {
     position: absolute;
+    margin-top: 150px;
     /* top: 0px; */
     /* left: 200px; */
     left: 25%;
     right: 25%;
+    background-color: whitesmoke;
 }
 
 .postContainer2 {
@@ -217,6 +292,7 @@ a.article:hover {
 }
 
 .pContent {
+    margin-top: 8px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     color: #52524d;
@@ -240,4 +316,18 @@ a.article:hover {
 
 .loginContainer {
     padding-top: 130%;
+}
+
+.commentN {
+    color: #262525;
+    font-size: 15px;
+    font-family: sans-serif;
+    margin-bottom: 2px;
+}
+
+.commentC {
+    color: #262525;
+    font-size: 17px;
+    font-family: sans-serif;
+    margin-bottom: 10px;
 }
