@@ -74,10 +74,10 @@
             <div class="loginContainer">
                 <ul class="list-unstyled CTAs">
                     <li>
-                        <a href="login.html" class="download">Login</a>
+                        <a href="login.php" class="download">Login</a>
                     </li>
                     <li>
-                        <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Profile</a>
+                        <a href="profile.html" class="article">Profile</a>
                     </li>
 
                 </ul>
@@ -88,7 +88,7 @@
 
 
         </nav>
-
+       
         <!-- Page Content  -->
         <div id="content">
 
@@ -99,7 +99,7 @@
                         <i class="fa fa-align-justify"></i>
                         <span>Toggle Sidebar</span>
                     </button>
-
+                
 
                     <div style="padding-right: 14.3%;">
                         <form class="form-inline">
@@ -127,22 +127,22 @@
                     <i class="pHeader1" style="color:#262525">@kanye_west</i>
                 </div>
                 <div class="rmContent">
-                    <img src="images/WhatsApp Image 2020-11-20 at 09.54.17.jpeg" class="imgContainer">
-                    <i class="pHeader1" style="color:#262525">@kristo_lala</i>
+                    <img src="images/kanye_west.jpg" class="imgContainer">
+                    <i class="pHeader1" style="color:#262525">@kanye_west</i>
                 </div>
                 <div class="rmContent">
-                    <img src="images/WhatsApp Image 2020-11-20 at 09.54.17.jpeg" class="imgContainer">
-                    <i class="pHeader1" style="color:#262525">@kristo_lala</i>
+                    <img src="images/kanye_west.jpg" class="imgContainer">
+                    <i class="pHeader1" style="color:#262525">@kanye_west</i>
                 </div>
                 <div class="rmContent">
-                    <img src="images/WhatsApp Image 2020-11-20 at 09.54.17.jpeg" class="imgContainer">
-                    <i class="pHeader1" style="color:#262525">@kristo_lala</i>
+                    <img src="images/kanye_west.jpg" class="imgContainer">
+                    <i class="pHeader1" style="color:#262525">@kanye_west</i>
                 </div>
                 <div class="rmFooter">
                     <p class="rmFooterTitle">Prima volta su Twitter?</p>
                     <p class="rmFooterP"> Iscriviti subito per sbloccare tutte le funzioni del sito.</p>
                     <div class="rmButtonContent">
-                        <button class="rmButton" onclick="location.href='register.html'">Iscriviti</button>
+                        <button class="rmButton" onclick="location.href='register.php'">Iscriviti</button>
                     </div>
 
 
