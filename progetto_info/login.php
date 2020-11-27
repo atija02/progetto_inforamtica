@@ -4,19 +4,19 @@ $msg = "";
 if (isset($_POST['submit'])) {
 	$con = new mysqli('localhost', 'root', 'pass', 'twitter');
 
-	$username = $con->real_escape_string($_POST['username']);
 	$email = $con->real_escape_string($_POST['email']);
 	$password = $con->real_escape_string($_POST['password']);
-	$cPassword = $con->real_escape_string($_POST['cPassword']);
 
-	if ($password != $cPassword)
-		$msg = "Please Check Your Passwords!";
-	else {
-		$hash = password_hash($password, PASSWORD_BCRYPT);
-		$con->query("INSERT INTO utenti (username,email,password) VALUES ('$username', '$email', '$hash')");
-		$msg = "You have been registered!";
-		header('Location: ./index.php');
-	}
+	$sql = $con->query("SELECT id, password FROM utenti WHERE email='$email'");
+	if ($sql->num_rows > 0) {
+		$data = $sql->fetch_array();
+		if (password_verify($password, $data['password'])) {
+			$msg = "You have been logged IN!";
+			header('Location: ./index.php');
+		} else
+			$msg = "Please check your inputs!";
+	} else
+		$msg = "Please check your inputs!";
 }
 ?>
 <!doctype html>
@@ -38,27 +38,22 @@ if (isset($_POST['submit'])) {
 
 <body>
 
-    <div class="containerReg">
+	<div class="containerLog">
+
 
 		<?php if ($msg != "") echo $msg . "<br><br>"; ?>
 
-		<h1 class="regTitle">Iscriviti!</h1>
+		<h1 class="logTitle">Login!</h1>
 
-		<form method="post" action="register.php">
-			<input class="form-control" required minlength="3" name="username" placeholder="Username" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
-			<input class="form-control" required name="email" type="email" placeholder="Email" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
-			<input class="form-control" required minlength="5" name="password" type="password" placeholder="Password" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
-			<input class="form-control" required minlength="5" name="cPassword" type="password" placeholder="Confirm Password" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
-			<input class="btn btn-info" name="submit" type="submit" value="Registrati" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
+		<form method="post" action="login.php">
+			<input class="form-control" name="email" type="email" placeholder="Email" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
+			<input class="form-control" minlength="5" name="password" type="password" placeholder="Password" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
+			<input class="btn btn-info" name="submit" type="submit" value="Log In" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
 			<a class="Back" href="index.php">Torna alla home</a>
 		</form>
-		
 
-		
 	</div>
-
-
-	<!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
