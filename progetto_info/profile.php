@@ -15,7 +15,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mycss.css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
@@ -28,25 +28,31 @@
 -->
 
 </head>
-<?php include_once "template.php" ?>
+<?php
+session_start();
+if (isset($_SESSION['email'])) {
+    include_once 'log-template.php';
+} else
+   header('Location: index.php');
+?>
 
 <body>
+    <div class="wrapper">
 
+        <div class="postContainer">
+            <!-- POST N1-->
+            <div class="card shadow-sm border-light mb-3 pb-3" style="max-width: 35rem;">
+                <div class="card-body text-info pb-0">
+                    <img src="images/bill_gates.jpg" class="imgContainer">
+                    <i class="pHeader1">@bill_gates</i> <i class="fas fa-check"></i>
+                </div>
 
-    <div class="postContainer">
-        <!-- POST N1-->
-        <div class="card shadow-sm border-light mb-3 pb-3" style="max-width: 35rem;">
-            <div class="card-body text-info pb-0">
-                <img src="images/bill_gates.jpg" class="imgContainer">
-                <i class="pHeader1">@bill_gates</i> <i class="fas fa-check"></i>
             </div>
+            <!-- FINE POST N1-->
 
-        </div>
-        <!-- FINE POST N1-->
-
-        <div class="postContainer2">
-            <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
-                <!-- <div class="card-header bg-transparent border-light">
+            <div class="postContainer2">
+                <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
+                    <!-- <div class="card-header bg-transparent border-light">
                             
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,15 +65,16 @@
                                 </div>
                             </div>
                         </div>-->
-                <div class="card-body text-info pb-0">
-                    <img src="images/kanye_west.jpg" class="imgContainer">
-                    <i class="pHeader1">@kanye_west</i> <i class="fas fa-check"></i>
-                    <p class="pContent">I will be the next <i class="pContent">USA</i> president.</p>
-                </div>
-                <div class="card-footer bg-transparent border-light">
-                    <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
-                    <i class="far fa-heart" style="font-size:16px;float:right"></i>
-                    <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
+                    <div class="card-body text-info pb-0">
+                        <img src="images/kanye_west.jpg" class="imgContainer">
+                        <i class="pHeader1">@kanye_west</i> <i class="fas fa-check"></i>
+                        <p class="pContent">I will be the next <i class="pContent">USA</i> president.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-light">
+                        <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
+                        <i class="far fa-heart" style="font-size:16px;float:right"></i>
+                        <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
+                    </div>
                 </div>
             </div>
         </div>

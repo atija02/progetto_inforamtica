@@ -62,7 +62,7 @@
         <div class="loginContainer">
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="login.php" class="download">Login</a>
+                    <a href="logout.php" class="download">Logout</a>
                 </li>
             </ul>
         </div>

@@ -12,6 +12,9 @@ if (isset($_POST['submit'])) {
 		$data = $sql->fetch_array();
 		if (password_verify($password, $data['password'])) {
 			$msg = "You have been logged IN!";
+			session_start();
+			$_SESSION['email']=$email;
+			$_SESSION['password']=$password;
 			header('Location: ./index.php');
 		} else
 			$msg = "Please check your inputs!";
