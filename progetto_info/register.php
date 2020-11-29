@@ -2,20 +2,32 @@
 $msg = "";
 
 if (isset($_POST['submit'])) {
+
 	$con = new mysqli('localhost', 'root', 'pass', 'twitter');
 
 	$username = $con->real_escape_string($_POST['username']);
 	$email = $con->real_escape_string($_POST['email']);
 	$password = $con->real_escape_string($_POST['password']);
 	$cPassword = $con->real_escape_string($_POST['cPassword']);
+	$uploadDir ='uploads/';
+
+	print_r($_FILES);
 
 	if ($password != $cPassword)
 		$msg = "Please Check Your Passwords!";
 	else {
-		$hash = password_hash($password, PASSWORD_BCRYPT);
-		$con->query("INSERT INTO utenti (username,email,password) VALUES ('$username', '$email', '$hash')");
-		$msg = "You have been registered!";
-		header('Location: ./index.php');
+
+		if (UPLOAD_ERR_OK === $_FILES['file']['error']) {
+			$fileName = basename($_FILES['file'] ['name']);
+			move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir.DIRECTORY_SEPARATOR.$fileName);
+			$avatar_path = $uploadDir.DIRECTORY_SEPARATOR.$fileName;
+			$hash = password_hash($password, PASSWORD_BCRYPT);
+			$con->query("INSERT INTO utenti (username,email,password,immagine) VALUES ('$username', '$email', '$hash','$avatar_path')");
+			$copia="INSERT INTO utenti (username,email,password,immagine) VALUES ('$username', '$email', '$hash','$avatar_path')";
+			echo $copia;
+			$msg = "You have been registered!";
+			header('Location: ./login.php');
+		}
 	}
 }
 ?>
@@ -38,23 +50,24 @@ if (isset($_POST['submit'])) {
 
 <body>
 
-    <div class="containerReg">
+	<div class="containerReg">
 
 		<?php if ($msg != "") echo $msg . "<br><br>"; ?>
 
 		<h1 class="regTitle">Iscriviti!</h1>
 
-		<form method="post" action="register.php">
+		<form method="post" action="register.php" enctype="multipart/form-data">
 			<input class="form-control" required minlength="3" name="username" placeholder="Username" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
 			<input class="form-control" required name="email" type="email" placeholder="Email" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
 			<input class="form-control" required minlength="5" name="password" type="password" placeholder="Password" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
 			<input class="form-control" required minlength="5" name="cPassword" type="password" placeholder="Confirm Password" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
+			<input type="file" name="file" required>
 			<input class="btn btn-info" name="submit" type="submit" value="Registrati" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);"><br>
 			<a class="Back" href="index.php">Torna alla home</a>
 		</form>
-		
 
-		
+
+
 	</div>
 
 

@@ -15,7 +15,17 @@ if (isset($_POST['submit'])) {
 			session_start();
 			$_SESSION['email']=$email;
 			$_SESSION['password']=$password;
+			//assegno alla variabile globale $_SESSION anche l'id e la path dell'immagine dell'utente che si è appena loggato
+			$result = $con->query("SELECT id,immagine FROM utenti WHERE email='$email'");
+			$id_utente ="";
+			$img_path ="";
+			$row = $result->fetch_assoc();
+			$id_utente .=$row["id"];
+			$img_path .=$row["immagine"];
+			$_SESSION['id']=$id_utente;
+			$_SESSION['immagine']=$img_path;
 			header('Location: ./index.php');
+			
 		} else
 			$msg = "Please check your inputs!";
 	} else

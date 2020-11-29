@@ -7,10 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
-    <title>Collapsible sidebar using Bootstrap 4</title>
-
-
+    <title>Homepage</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -40,87 +37,46 @@ if (isset($_SESSION['email'])) {
 <body>
 
     <div class="postContainer">
-        <!-- POST N1-->
-        <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
-            <div class="card-body text-info pb-0">
-                <img src="images/bill_gates.jpg" class="imgContainer">
-                <i class="pHeader1">@bill_gates</i> <i class="fas fa-check"></i>
-                <p class="pContent">More than 7 million community health workers serve their neighbors around the world, improving access to primary healthcare for their communities. Now they’re doing heroic work to respond to the pandemic.</p>
-            </div>
-            <div class="card-footer bg-transparent border-light">
-                <span class="pFooter1" onclick="location.href='post-comment.html'">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
-                <i class="far fa-heart" style="font-size:16px;float:right"></i>
-                <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
-            </div>
-        </div>
-        <!-- FINE POST N1-->
 
-        <!-- POST N2 -->
-        <div class="postContainer2">
-            <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
-                <div class="card-body text-info pb-0">
-                    <img src="images/kanye_west.jpg" class="imgContainer">
-                    <i class="pHeader1">@kanye_west</i> <i class="fas fa-check"></i>
-                    <p class="pContent">I will be the next <i class="pContent">USA</i> president.</p>
-                </div>
-                <div class="card-footer bg-transparent border-light">
-                    <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
-                    <i class="far fa-heart" style="font-size:16px;float:right"></i>
-                    <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
-                </div>
-            </div>
-        </div>
-        <!-- FINE POST N2-->
 
-        <!-- POST N3 -->
-        <div class="postContainer2">
-            <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
-                <div class="card-body text-info pb-0">
-                    <img src="images/giuseppe_conte.jpg" class="imgContainer">
-                    <i class="pHeader1">@giuseppeconte</i> <i class="fas fa-check"></i>
-                    <p class="pContent">Indossa la mascherina, mantieni la distanza, lava spesso le mani. Seguiamo queste #TreSempliciRegole. Questa battaglia si vince con l’impegno di TUTTI.</p>
-                </div>
-                <div class="card-footer bg-transparent border-light">
-                    <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
-                    <i class="far fa-heart" style="font-size:16px;float:right"></i>
-                    <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
-                </div>
-            </div>
-        </div>
-        <!-- FINE POST N3 -->
 
-        <!-- POST N3 -->
-        <div class="postContainer2">
-            <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
-                <div class="card-body text-info pb-0">
-                    <img src="images/giuseppe_conte.jpg" class="imgContainer">
-                    <i class="pHeader1">@giuseppeconte</i> <i class="fas fa-check"></i>
-                    <p class="pContent">Indossa la mascherina, mantieni la distanza, lava spesso le mani. Seguiamo queste #TreSempliciRegole. Questa battaglia si vince con l’impegno di TUTTI.</p>
-                </div>
-                <div class="card-footer bg-transparent border-light">
-                    <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
-                    <i class="far fa-heart" style="font-size:16px;float:right"></i>
-                    <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
-                </div>
-            </div>
-        </div>
-        <!-- FINE POST N3 -->
-        <!-- POST N3 -->
-        <div class="postContainer2">
-            <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
-                <div class="card-body text-info pb-0">
-                    <img src="images/giuseppe_conte.jpg" class="imgContainer">
-                    <i class="pHeader1">@giuseppeconte</i> <i class="fas fa-check"></i>
-                    <p class="pContent">Indossa la mascherina, mantieni la distanza, lava spesso le mani. Seguiamo queste #TreSempliciRegole. Questa battaglia si vince con l’impegno di TUTTI.</p>
-                </div>
-                <div class="card-footer bg-transparent border-light">
-                    <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
-                    <i class="far fa-heart" style="font-size:16px;float:right"></i>
-                    <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
-                </div>
-            </div>
-        </div>
-        <!-- FINE POST N3 -->
+        <?php
+        $con = new mysqli('localhost', 'root', 'pass', 'twitter');
+        $sql = "SELECT contenuto, username, immagine FROM post INNER JOIN utenti ON post.fk_utente = utenti.id;";
+        $result = $con->query(($sql));
+
+        //se row > 0, carico i dati
+        if ($result->num_rows > 0) {
+            $tabella2 = "";
+            while ($row = $result->fetch_assoc()) {
+
+                $tabella2 .= "<div class='postContainer2'>" .
+                    " <div class='card shadow-sm border-light mb-3' style='max-width: 35rem;'>" .
+                    "<div class='card-body text-info pb-0'>" .
+                    "<img src='" . $row["immagine"] . "'" . "class='imgContainer'>" .
+                    "<i class='pHeader1'>" . "@" . $row["username"] . "</i>" . " <i class='fas fa-check'>" . "</i>" .
+                    " <p class='pContent'>" . $row["contenuto"] . "</p>" .
+                    "</div>" .
+                    " <div class='card-footer bg-transparent border-light'>" .
+                    "<a class='pFooter1' href='post-comment.php'>Commenti</a>" . "<i class='fa fa-comment-o' aria-hidden='true' style='font-size:15px'></i>" .
+
+                    " <i class='far fa-heart' style='font-size:16px;float:right'></i>" .
+                    " <span class='pFooter2'>Like&nbsp; </span><i class='far fa-comment-alt'></i>" .
+                    "</div>" .
+                    "</div>" .
+                    "</div>";
+            }
+        } else {
+            echo "nessun post presente all'interno del database";
+        }
+
+
+        ?>
+
+
+
+        <?php echo $tabella2; ?>
+
     </div>
 
 

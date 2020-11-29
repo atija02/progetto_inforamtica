@@ -7,12 +7,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #15202B;
+    background-color: #89b8db;
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 40px;
     padding-bottom: 40px;
-    border: 3px solid #15202B;
+    border: 3px solid #89b8db;
     border-radius: 8px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
@@ -23,12 +23,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #15202b;
+    background-color: #89b8db;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 40px;
     padding-bottom: 60px;
-    border: 3px solid #15202B;
+    border: 3px solid #89b8db;
     border-radius: 8px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
@@ -39,8 +39,8 @@ body {
     font-family: sans-serif;
     padding-bottom: 40px;
     text-align: center;
-    color: white;
-    text-shadow: 2px 2px 4px black;
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 1px #2f3030;
 }
 
 .logTitle {
@@ -48,13 +48,13 @@ body {
     font-family: sans-serif;
     padding-bottom: 70px;
     text-align: center;
-    color: white;
-    text-shadow: 2px 2px 4px black;
+    color: whitesmoke;
+    text-shadow: 0.5px 0.5px 1px #2f3030;
 }
 
 .Back {
     position: absolute;
-    color: #005e93;
+    color: whitesmoke;
     padding-top: 15px;
     transform: translate( -50%);
     text-shadow: 0.1px 0.1px 0.4px black;

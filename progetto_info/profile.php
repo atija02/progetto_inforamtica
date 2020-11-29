@@ -33,50 +33,87 @@ session_start();
 if (isset($_SESSION['email'])) {
     include_once 'log-template.php';
 } else
-   header('Location: index.php');
+    header('Location: login.php');
 ?>
 
 <body>
     <div class="wrapper">
 
         <div class="postContainer">
-            <!-- POST N1-->
-            <div class="card shadow-sm border-light mb-3 pb-3" style="max-width: 35rem;">
-                <div class="card-body text-info pb-0">
-                    <img src="images/bill_gates.jpg" class="imgContainer">
-                    <i class="pHeader1">@bill_gates</i> <i class="fas fa-check"></i>
-                </div>
 
-            </div>
-            <!-- FINE POST N1-->
 
-            <div class="postContainer2">
-                <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
-                    <!-- <div class="card-header bg-transparent border-light">
-                            
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Dropdown button
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>-->
-                    <div class="card-body text-info pb-0">
-                        <img src="images/kanye_west.jpg" class="imgContainer">
-                        <i class="pHeader1">@kanye_west</i> <i class="fas fa-check"></i>
-                        <p class="pContent">I will be the next <i class="pContent">USA</i> president.</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-light">
-                        <span class="pFooter1">Comment</span> <i class="fa fa-comment-o" onclick="window.location.href='signin.html'" aria-hidden="true" style="font-size:15px"></i>
-                        <i class="far fa-heart" style="font-size:16px;float:right"></i>
-                        <span class="pFooter2">Like&nbsp; </span><i class="far fa-comment-alt"></i>
-                    </div>
-                </div>
-            </div>
+
+            <?php
+            $con = new mysqli('localhost', 'root', 'pass', 'twitter');
+            $session_id = $_SESSION['id'];
+            $sql = "SELECT username, immagine  FROM utenti WHERE id = '$session_id'";
+            $result = $con->query(($sql));
+
+            //se row > 0, carico i dati
+            if ($result->num_rows > 0) {
+                $tabella4 = "";
+                while ($row = $result->fetch_assoc()) {
+
+                    $tabella4 .= "<div class='postContainer2'>" .
+                        "<div class='card shadow-sm border-light mb-3' style='max-width: 35rem;'>" .
+                        "<div class='card-body text-info pb-0'>" .
+                        "<img src='" . $row["immagine"] . "'" . "class='imgContainer'>" .
+                        "<i class='pHeader1'>" . "@" . $row["username"] . "</i>" . " <i class='fas fa-check'>" . "</i>" .
+                        "<br>" .
+                        "<br>" .
+                        "</div>" .
+                        "</div>" .
+                        "</div>";
+                }
+            } else {
+                echo "errore";
+            }
+
+
+            ?>
+            <?php
+            $con = new mysqli('localhost', 'root', 'pass', 'twitter');
+            $session_id = $_SESSION['id'];
+
+            $sql = "SELECT commenti.commento, utenti.username FROM commenti INNER JOIN post ON post.id_post = commenti.fk_postC INNER JOIN utenti ON utenti.id = post.fk_utente WHERE commenti.fk_utenteC = '$session_id'";
+            $resultt = $con->query(($sql));
+
+            //se row > 0, carico i dati
+            if ($resultt->num_rows > 0) {
+                $tabella5 = "";
+                while ($row = $resultt->fetch_assoc()) {
+
+                    $tabella5 .= "<div class='postContainer2'>" .
+                        "<div class='card shadow-sm border-light mb-3' style='max-width: 35rem;'>" .
+                        "<div class='card-body text-info pb-0'>" .
+                        "<i class='pHeader1'>" . "You commented: " . "'" . $row["commento"] . "' at " . $row["username"] . "'s post." . "</i>" .
+                        "<br>" .
+                        "<br>" .
+                        "</div>" .
+                        "</div>" .
+                        "</div>";
+                }
+            } else {
+                $tabella5 = "";
+                $tabella5 .= "<div class='postContainer2'>" .
+                    "<div class='card shadow-sm border-light mb-3' style='max-width: 35rem;'>" .
+                    "<div class='card-body text-info pb-0'>" .
+                    "<i class='pHeader1'>" . "Non hai commentato ancora nessun post!" . "</i>" .
+                    "<br>" .
+                    "<br>" .
+                    "</div>" .
+                    "</div>" .
+                    "</div>";
+            }
+
+
+            ?>
+
+
+            <?php echo $tabella4; ?>
+            <?php echo $tabella5; ?>
+
+
         </div>
     </div>
 
