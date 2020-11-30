@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Post Comment</title>
 
 
 
@@ -44,44 +44,102 @@ if (isset($_SESSION['email'])) {
 
 
     <div class="postContainer">
-        <!-- POST N1-->
-        <div class="card shadow-sm border-light mb-3" style="max-width: 35rem;">
-            <div class="card-body text-info pb-0">
-                <img src="images/bill_gates.jpg" class="imgContainer">
-                <i class="pHeader1">@bill_gates</i> <i class="fas fa-check"></i>
-                <p class="pContent">More than 7 million community health workers serve their neighbors around the world, improving access to primary healthcare for their communities. Now they’re doing heroic work to respond to the pandemic.</p>
-            </div>
 
+        <?php
+        $idpost = $_GET['idpost'];
+        $con = new mysqli('localhost', 'root', 'pass', 'twitter');
+        $sql = "SELECT id_post, contenuto, username, immagine FROM post INNER JOIN utenti ON post.fk_utente = utenti.id WHERE id_post = '$idpost'";
+        $result = $con->query(($sql));
+
+        //se row > 0, carico i dati
+        if ($result->num_rows > 0) {
+            $postcom = "";
+            while ($row = $result->fetch_assoc()) {
+
+                $postcom .= "<div class='postContainer2'>" .
+                    " <div class='card shadow-sm border-light mb-3' style='max-width: 35rem;'>" .
+                    "<div class='card-body text-info pb-0'>" .
+                    "<img src='" . $row["immagine"] . "'" . "class='imgContainer'>" .
+                    "<i class='pHeader1'>" . "@" . $row["username"] . "</i>" . " <i class='fas fa-check'>" . "</i>" .
+                    " <p class='pContent'>" . $row["contenuto"] . "</p>" .
+                    "</div>" .
+                    "</div>" .
+                    "</div>";
+            }
+        } else {
+            echo "nessun post presente all'interno del database";
+        }
+
+        ?>
+
+
+        <?php
+        echo $postcom;
+        ?>
+
+
+
+        <?php
+        $idpost = $_GET['idpost'];
+        $con = new mysqli('localhost', 'root', 'pass', 'twitter');
+        $sql = "SELECT post.id_post, utenti.username, utenti.immagine, commenti.commento FROM post INNER JOIN commenti ON commenti.fk_postC = post.id_post INNER JOIN utenti ON utenti.id = commenti.fk_utenteC WHERE post.id_post = '$idpost' ORDER BY commenti.id DESC LIMIT 5";
+        // $sql = "SELECT commenti.commento, utenti.username FROM commenti INNER JOIN post ON post.id_post = commenti.fk_postC INNER JOIN utenti ON utenti.id = post.fk_utente WHERE commenti.fk_utenteC = '$session_id'";
+
+        $result = $con->query(($sql));
+
+        //se row > 0, carico i dati
+        if ($result->num_rows > 0) {
+            $tab6 = "";
+            while ($row = $result->fetch_assoc()) {
+
+                $tab6 .=
+
+                    "<div class='card-body text-info pb-0'>" .
+                    "<img src='" . $row["immagine"] . "'" . "class='imgContainer'>" .
+                    "<i class='pHeader1'>" . "@" . $row["username"] . "</i>" . " <i class='fas fa-check'>" . "</i>" .
+                    " <p class='pContent'>" . $row["commento"] . "</p>" .
+
+
+
+                    "</div>";
+            }
+        } else {
+            $tab6 = "";
+            $tab6 .=
+
+                "<div class='card-body text-info pb-0'>" .
+
+                " <p class='pContent'>" . "Nessun commento" . "</p>" .
+
+                "</div>";
+        }
+
+
+        ?>
+
+        <div class='card shadow-sm border-light mb-3' style='max-width: 35rem;'>
+            <?php
+            echo $tab6;
+            ?>
             <div class="card-footer bg-transparent border-light">
-                <div class="overflow-auto">
-                    <p class="commentN">@user</p>
-                    <p class="commentC">So funny!!</p>
-                    <p class="commentN">@user</p>
-                    <p class="commentC">So funny!!</p>
-                    <p class="commentN">@user</p>
-                    <p class="commentC">So funny!!</p>
-                    <p class="commentN">@user</p>
-                    <p class="commentC">So funny!!</p>
-                    <p class="commentN">@user</p>
-                    <p class="commentC">So funny!!</p>
-                    <p class="commentN">@user</p>
-                    <p class="commentC">So funny!!</p>
+                <?php
+                $idpost = $_GET['idpost'];
+                $stringa = "";
+                //"<a class='pFooter1' href='post-comment.php?idpost=".$row['id_post']."'>Commenti</a>" . "<i class='fa fa-comment-o' aria-hidden='true' style='font-size:15px'></i>" .
+                $stringa .= "<a href='commenta.php?idpost=" . $idpost . "' class='btn btn-info btn-sm ' role='button' aria-pressed='true'>Scrivi un commento!</a>";
+                echo $stringa;
+                ?>
 
-                </div>
-
-            </div>
-            <div class="card-footer bg-transparent border-light">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Write . . ." aria-label="Search">
-                    <button class="btn btn-info my-2 my-sm-0" type="submit">Comment</button>
-                </form>
             </div>
         </div>
-        <!-- FINE POST N1-->
+
+
+
+
+
 
 
     </div>
-
 
 
 

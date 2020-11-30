@@ -42,7 +42,7 @@ if (isset($_SESSION['email'])) {
 
         <?php
         $con = new mysqli('localhost', 'root', 'pass', 'twitter');
-        $sql = "SELECT contenuto, username, immagine FROM post INNER JOIN utenti ON post.fk_utente = utenti.id;";
+        $sql = "SELECT id_post, contenuto, username, immagine FROM post INNER JOIN utenti ON post.fk_utente = utenti.id LIMIT 10;";
         $result = $con->query(($sql));
 
         //se row > 0, carico i dati
@@ -58,10 +58,9 @@ if (isset($_SESSION['email'])) {
                     " <p class='pContent'>" . $row["contenuto"] . "</p>" .
                     "</div>" .
                     " <div class='card-footer bg-transparent border-light'>" .
-                    "<a class='pFooter1' href='post-comment.php'>Commenti</a>" . "<i class='fa fa-comment-o' aria-hidden='true' style='font-size:15px'></i>" .
-
+                    "<a class='pFooter1' href='post-comment.php?idpost=".$row['id_post']."'>Commenti</a>" . "<i class='fa fa-comment-o' aria-hidden='true' style='font-size:15px'></i>" .
                     " <i class='far fa-heart' style='font-size:16px;float:right'></i>" .
-                    " <span class='pFooter2'>Like&nbsp; </span><i class='far fa-comment-alt'></i>" .
+                    " <a class='pFooter2' href='like.php?idpost=".$row['id_post']."'>Like&nbsp; </a><i class='far fa-comment-alt'></i>" .
                     "</div>" .
                     "</div>" .
                     "</div>";

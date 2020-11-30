@@ -1,5 +1,5 @@
 body {
-    background-image: url("images/twitter-wallpaper.png");
+    background-image: url("images/twitterbackgroun.jpg");
 }
 
 .containerReg {
@@ -7,12 +7,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #89b8db;
+    background-color: #e1f2fc;
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 40px;
-    padding-bottom: 40px;
-    border: 3px solid #89b8db;
+    padding-bottom: 60px;
+    border: 3px solid #e1f2fc;
     border-radius: 8px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
@@ -23,12 +23,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #89b8db;
+    background-color: #e1f2fc;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 40px;
     padding-bottom: 60px;
-    border: 3px solid #89b8db;
+    border: 3px solid #e1f2fc;
     border-radius: 8px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
@@ -39,7 +39,7 @@ body {
     font-family: sans-serif;
     padding-bottom: 40px;
     text-align: center;
-    color: whitesmoke;
+    color: #17a2b8;
     text-shadow: 0.5px 0.5px 1px #2f3030;
 }
 
@@ -48,14 +48,14 @@ body {
     font-family: sans-serif;
     padding-bottom: 70px;
     text-align: center;
-    color: whitesmoke;
+    color: #17a2b8;
     text-shadow: 0.5px 0.5px 1px #2f3030;
 }
 
 .Back {
+    font-size: 18px;
     position: absolute;
-    color: whitesmoke;
+    color: #17a2b8;
     padding-top: 15px;
     transform: translate( -50%);
-    text-shadow: 0.1px 0.1px 0.4px black;
 }
